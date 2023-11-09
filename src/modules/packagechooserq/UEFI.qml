@@ -50,7 +50,7 @@ Column {
             width: 600
             height: 90
             anchors.centerIn: parent
-            text: qsTr("<strong>Systemd-boot</strong><br><br>provides a simple experience<br>which will work for most circumstances.<br>This is the default option for <strong>EndeavourOS</strong>.")
+            text: qsTr("<strong>Systemd-boot</strong><br><br>provides a simple experience<br>which will work for most circumstances.<br>This is the default option for <strong>AsterLinux</strong>.")
             font.pointSize: 10
             color: "#ffffff"
             anchors.verticalCenterOffset: 0
@@ -93,125 +93,6 @@ Column {
                 } else {
                     config.packageChoice = "systemd-boot"
                     print(config.packageChoice)
-                }
-            }
-        }
-    }
-
-    Rectangle {
-        width: 700
-        height: 135
-        color: "#1b1e20"
-        radius: 5
-        border.width: 1
-        border.color: "#646b75"
-        Text {
-            width: 600
-            height: 90
-            anchors.centerIn: parent
-            text: qsTr("<strong>Grub Bootloader</strong><br><br>A longstanding bootloader for Linux.<br>It is the best choice for individuals wanting to boot off of btrfs snapshots,<br>or need to use a smaller EFI partition.")
-            font.pointSize: 10
-            color: "#ffffff"
-            anchors.verticalCenterOffset: 0
-            anchors.horizontalCenterOffset: -20.0
-            wrapMode: Text.WordWrap
-        }
-
-        Switch {
-            id: element4
-            x: 500
-            y: 90
-            width: 187
-            height: 14
-            text: qsTr("Grub")
-            checked: false
-            hoverEnabled: true
-            ButtonGroup.group: switchGroup
-
-
-            indicator: Rectangle {
-                implicitWidth: 40
-                implicitHeight: 14
-                radius: 10
-                color: element4.checked ? "#3498db" : "#B9B9B9"
-                border.color: element4.checked ? "#3498db" : "#cccccc"
-
-                Rectangle {
-                    x: element4.checked ? parent.width - width : 0
-                    y: (parent.height - height) / 2
-                    width: 20
-                    height: 20
-                    radius: 10
-                    color: element4.down ? "#cccccc" : "#ffffff"
-                    border.color: element4.checked ? (element4.down ? "#3498db" : "#3498db") : "#999999"
-                }
-            }
-
-            onCheckedChanged: {
-                if (! checked) {
-                    print("Grub not used")
-                } else {
-                    print("Grub")
-                    config.packageChoice = "grub"
-                }
-            }
-        }
-    }
-
-    Rectangle {
-        width: 700
-        height: 135
-        color: "#1b1e20"
-        radius: 5
-        border.width: 1
-        border.color: "#646b75"
-        Text {
-            width: 600
-            height: 90
-            anchors.centerIn: parent
-            text: qsTr("<strong>No Bootloader</strong><br><br>Selecting no bootloader might result in an <strong>un-bootable system</strong>,<br>If you don't already have a bootloader that you can add this install to.")
-            font.pointSize: 10
-            color: "#ffffff"
-            anchors.verticalCenterOffset: 0
-            anchors.horizontalCenterOffset: -20.0
-            wrapMode: Text.WordWrap
-        }
-
-        Switch {
-            id: element3
-            x: 500
-            y: 90
-            width: 187
-            height: 14
-            text: qsTr("No bootloader")
-            checked: false
-            hoverEnabled: true
-            ButtonGroup.group: switchGroup
-
-            indicator: Rectangle {
-                implicitWidth: 40
-                implicitHeight: 14
-                radius: 10
-                color: element3.checked ? "#ff8585" : "#B9B9B9"
-                border.color: element3.checked ? "#ff8585" : "#cccccc"
-
-                Rectangle {
-                    x: element3.checked ? parent.width - width : 0
-                    y: (parent.height - height) / 2
-                    width: 20
-                    height: 20
-                    radius: 10
-                    color: element3.down ? "#cccccc" : "#ffffff"
-                    border.color: element3.checked ? (element3.down ? "#ff8585" : "#ff8585") : "#999999"
-                }
-            }
-
-            onCheckedChanged: {
-                if (! checked) {
-                    print("no btl not checked")
-                } else {
-                    print("no bootloader")
-                    config.packageChoice = "none"
                 }
             }
         }
